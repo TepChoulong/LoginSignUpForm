@@ -1,4 +1,4 @@
-## Welcome!
+#### Welcome!
 
 Welcome to the free open-source code of java swing. Here is a guideline to help you get started to write Java swing code in Visual Studio Code.
 
