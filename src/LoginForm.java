@@ -9,13 +9,14 @@ class LoginForm extends JFrame implements ActionListener
     JLabel userLabel, passLabel, emailLabel, statusLabel;
     JTextField userTextField, userEmailField;
     JPasswordField passTextField;
-    JButton loginButton, signupButton;
+    JButton loginButton, signUpButton;
 
     public LoginForm() 
     {
         setTitle("Login Form");
-        setSize(300, 200);
+        setSize(1000, 500);
         setLayout(new GridLayout(5, 2));
+        setLocationRelativeTo(null);
 
         userLabel = new JLabel("Username:");
         add(userLabel);
@@ -32,13 +33,13 @@ class LoginForm extends JFrame implements ActionListener
         passTextField = new JPasswordField();
         add(passTextField);
 
+        signUpButton = new JButton("Sign Up");
+        add(signUpButton);
+        signUpButton.addActionListener(this);
+
         loginButton = new JButton("Login");
         add(loginButton);
         loginButton.addActionListener(this);
-
-        signupButton = new JButton("Sign Up");
-        add(signupButton);
-        signupButton.addActionListener(this);
 
         statusLabel = new JLabel("");
         add(statusLabel);
@@ -87,10 +88,10 @@ class LoginForm extends JFrame implements ActionListener
 
         }
 
-        if (ae.getSource() == signupButton) 
+        if (ae.getSource() == signUpButton) 
         {
             dispose();
-            SignUpForm signUpForm = new SignUpForm();
+            new SignUpForm();
         }
     }
 }

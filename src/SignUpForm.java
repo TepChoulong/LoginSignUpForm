@@ -3,13 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
-class SignUpForm extends JFrame 
+class SignUpForm extends JFrame
 {
 
     private JLabel nameLabel, emailLabel, passwordLabel;
     private JTextField nameField, emailField;
     private JPasswordField passwordField;
-    private JButton signUpButton;
+    private JButton signUpButton, loginButton;
 
     public SignUpForm() 
     {
@@ -22,11 +22,33 @@ class SignUpForm extends JFrame
         passwordField = new JPasswordField();
 
         signUpButton = new JButton("Sign Up");
+        loginButton = new JButton("Login");
 
-        signUpButton.addActionListener(new ActionListener() 
+        JPanel panel = new JPanel(new GridLayout(5, 2));
+        panel.add(nameLabel);
+        panel.add(nameField);
+
+        panel.add(emailLabel);
+        panel.add(emailField);
+
+        panel.add(passwordLabel);
+        panel.add(passwordField);
+
+        panel.add(loginButton);
+        panel.add(signUpButton);
+        panel.add(new JLabel()); // spacer
+
+        setTitle("Sign Up Form");
+        setSize(1000, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(panel);
+        setVisible(true);
+
+        signUpButton.addActionListener(new ActionListener()
         {
             @Override
-            public void actionPerformed(ActionEvent e) 
+            public void actionPerformed(ActionEvent ae) 
             {
                 String name = nameField.getText();
                 String email = emailField.getText();
@@ -61,21 +83,14 @@ class SignUpForm extends JFrame
             }
         });
 
-        JPanel panel = new JPanel(new GridLayout(4, 2));
-        panel.add(nameLabel);
-        panel.add(nameField);
-        panel.add(emailLabel);
-        panel.add(emailField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(new JLabel()); // spacer
-        panel.add(signUpButton);
-
-        setTitle("Sign Up Form");
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(panel);
-        pack();
-        setVisible(true);
+        loginButton.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent ae)
+            {
+                dispose();
+                new LoginForm();
+            }
+        });
     }
 }
