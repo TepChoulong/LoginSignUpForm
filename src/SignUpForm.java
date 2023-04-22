@@ -75,9 +75,9 @@ class SignUpForm extends JFrame
                         nameField.setText(name);
                         emailField.setText("");
                         passwordField.setText("");
-                        dispose();
                         UserPage userPage = new UserPage();
-                        userPage.UserPage_SignUp();
+                        userPage.UserPage_SignUp(name);
+                        dispose();
                     } 
                     catch (SQLException ex) 
                     {
