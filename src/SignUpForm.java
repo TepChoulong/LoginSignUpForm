@@ -11,6 +11,8 @@ class SignUpForm extends JFrame
     private JPasswordField passwordField;
     private JButton signUpButton, loginButton;
 
+    String name;
+
     public SignUpForm() 
     {
         nameLabel = new JLabel("Enter Your Userame:");
@@ -50,7 +52,7 @@ class SignUpForm extends JFrame
             @Override
             public void actionPerformed(ActionEvent ae) 
             {
-                String name = nameField.getText();
+                name = nameField.getText();
                 String email = emailField.getText();
                 String password = new String(passwordField.getPassword());
 
@@ -70,9 +72,12 @@ class SignUpForm extends JFrame
                         pst.executeUpdate();
 
                         JOptionPane.showMessageDialog(null, "Sign-up successful!");
-                        nameField.setText("");
+                        nameField.setText(name);
                         emailField.setText("");
                         passwordField.setText("");
+                        dispose();
+                        UserPage userPage = new UserPage();
+                        userPage.UserPage_SignUp();
                     } 
                     catch (SQLException ex) 
                     {

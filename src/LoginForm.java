@@ -11,41 +11,55 @@ class LoginForm extends JFrame implements ActionListener
     JPasswordField passTextField;
     JButton loginButton, signUpButton;
 
+    String user;
+
     public LoginForm() 
     {
-        setTitle("Login Form");
-        setSize(1000, 500);
-        setLayout(new GridLayout(5, 2));
-        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
 
         userLabel = new JLabel("Username:");
-        add(userLabel);
         userTextField = new JTextField();
-        add(userTextField);
-
+        
         emailLabel = new JLabel("Email:");
-        add(emailLabel);
         userEmailField = new JTextField();
-        add(userEmailField);
 
         passLabel = new JLabel("Password:");
-        add(passLabel);
         passTextField = new JPasswordField();
-        add(passTextField);
 
         signUpButton = new JButton("Sign Up");
-        add(signUpButton);
         signUpButton.addActionListener(this);
-
+        
+        
         loginButton = new JButton("Login");
-        add(loginButton);
         loginButton.addActionListener(this);
-
+        
         statusLabel = new JLabel("");
-        add(statusLabel);
+        
+        
+        panel.add(userLabel);
+        panel.add(userTextField);
 
+        panel.add(emailLabel);
+        panel.add(userEmailField);
+
+        panel.add(passLabel);
+        panel.add(passTextField);
+
+        panel.add(signUpButton);
+
+        panel.add(loginButton);
+
+        panel.add(statusLabel);
+        
+
+        panel.setLayout(new GridLayout(5, 2));
+        
+        setTitle("Login Form");
+        setSize(1000, 500);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        add(panel);
     }
 
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -59,7 +73,7 @@ class LoginForm extends JFrame implements ActionListener
         if (ae.getSource() == loginButton) 
         {
 
-            String user = userTextField.getText();
+            user = userTextField.getText();
             String email = userEmailField.getText();
             String pass = new String(passTextField.getPassword());
 
@@ -71,9 +85,14 @@ class LoginForm extends JFrame implements ActionListener
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM users WHERE user_name='" + user + "' AND user_password='" + pass + "' AND user_email='" + email + "'");
 
+                userTextField.setText(user);
+
                 if (rs.next()) 
                 {
                     statusLabel.setText("Login successful");
+                    UserPage userPage = new UserPage();
+                    userPage.UserPage_Login(user);
+                    dispose();
                 } 
                 else 
                 {
