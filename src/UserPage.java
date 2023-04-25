@@ -11,7 +11,7 @@ class UserPage extends JFrame {
         add(welcome_txt);
 
         setTitle("User Page");
-        setSize(1000, 500);
+        setSize(1280, 720);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -24,7 +24,7 @@ class UserPage extends JFrame {
         add(welcome_txt);
 
         setTitle("User Page");
-        setSize(1000, 500);
+        setSize(1280, 720);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
