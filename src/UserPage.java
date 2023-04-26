@@ -319,16 +319,17 @@ class UserPage extends JFrame {
 
     private void logout_btnActionPerformed(ActionEvent evt) {
         new LoginForm().setVisible(true);
+        dispose();
     }
 
 
     public void UserPage_SignUp(String User_name, String User_email) {
         username_lb.setText(User_name);
-        email_lb.setText(User_name);
+        email_lb.setText(User_email);
     }
 
     public void UserPage_Login(String User_name, String User_email) {
         username_lb.setText(User_name);
-        email_lb.setText(User_name);
+        email_lb.setText(User_email);
     }
 }
