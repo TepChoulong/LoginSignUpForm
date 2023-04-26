@@ -17,7 +17,7 @@ class LoginForm extends JFrame
     private javax.swing.JLabel username_lb;
     private javax.swing.JTextField username_tf;
 
-    private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private String DB_URL = "jdbc:mysql://localhost/choulong_company";
     private String USER = "root";
     private String PASS = "123456789";
@@ -197,7 +197,7 @@ class LoginForm extends JFrame
             if (rs.next()) 
             {
                 UserPage userPage = new UserPage();
-                userPage.UserPage_Login(user);
+                userPage.UserPage_Login(user, email);
                 dispose();
             } 
             else 

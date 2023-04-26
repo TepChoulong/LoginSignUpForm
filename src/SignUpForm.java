@@ -201,7 +201,7 @@ class SignUpForm extends JFrame
                 email_tf.setText("");
                 password_tf.setText("");
                 UserPage userPage = new UserPage();
-                userPage.UserPage_SignUp(name);
+                userPage.UserPage_SignUp(name, email);
                 dispose();
             } 
             catch (SQLException ex) 
